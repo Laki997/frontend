@@ -3,7 +3,7 @@ import baseService from './baseService'
 class AuthService extends baseService {
     async register(user){
         const {data} = await this.client.post('/auth/register',user);
-
+        console.log(data)
         return data;
     }
 }

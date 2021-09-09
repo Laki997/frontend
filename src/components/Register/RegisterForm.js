@@ -24,7 +24,6 @@
           validationSchema = {validate}
           onSubmit = {values => {
               dispatch(registerUserAction(values));
-              console.log(values)
           } }
           >
               {formik => (

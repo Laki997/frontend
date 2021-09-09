@@ -1,15 +1,20 @@
-// import { REGISTER_USER } from "../config/actionTypes";
+import { REGISTER_FAILURE} from "../config/actionTypes";
 
-// const INITIAL_STATE = {
-//     user: null
-// }
+const INITIAL_STATE = {
+    user: null,
+    error:null
+}
 
-// const registerReducer = (state = INITIAL_STATE, action) => {
-//     switch(action.type) {
-//         case REGISTER_USER:
-//             return {
-//                 ...state,
-//                 user: action.payload,
-//             }
-//     }
-// }
+const registerReducer = (state = INITIAL_STATE, action) => {
+    switch(action.type) {
+        case REGISTER_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+            }
+            default:
+                return state;
+    }
+}
+
+export default registerReducer
