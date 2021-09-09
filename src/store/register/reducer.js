@@ -1,4 +1,4 @@
-import { REGISTER_FAILURE} from "../config/actionTypes";
+import { REGISTER_FAILURE} from "./actionTypes";
 
 const INITIAL_STATE = {
     user: null,
