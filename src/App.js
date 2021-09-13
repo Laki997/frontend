@@ -5,6 +5,7 @@ import RegisterFrom from "./components/Register/RegisterForm";
 import PrivateRoute from "../src/routers/PrivateRoute";
 import PublicRoute from "./routers/PublicRoute";
 import Movies from "./components/Movies/movies";
+import { ROUTES } from "../src/constants";
 
 function App() {
   return (
@@ -13,17 +14,17 @@ function App() {
         <div className="row">
           <div className="col-md-5">
             <Switch>
-              <PrivateRoute component={Movies} path="/" exact />
+              <PrivateRoute component={Movies} path={ROUTES.MOVIES} exact />
               <PublicRoute
                 restricted={true}
                 component={LoginForm}
-                path="/login"
+                path={ROUTES.LOGIN}
                 exact
               />
               <PublicRoute
                 restricted={true}
                 component={RegisterFrom}
-                path="/register"
+                path={ROUTES.REGISTER}
                 exact
               />
             </Switch>
