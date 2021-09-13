@@ -2,36 +2,31 @@ import { Formik, Form } from "formik";
 import InputField from "../shared/formik/input";
 import { validate } from "./validation";
 import { useDispatch } from "react-redux";
-import { registerUserAction } from "../../store/register/actions";
+import { loginUserAction } from "../../store/login/actions";
 
-const Register = () => {
+const LoginForm = () => {
   const dispatch = useDispatch();
-
   return (
     <Formik
       initialValues={{
-        firstName: "",
-        lastName: "",
         email: "",
         password: "",
       }}
       validationSchema={validate}
       onSubmit={(values, { resetForm }) => {
-        dispatch(registerUserAction(values));
+        dispatch(loginUserAction(values));
         resetForm();
       }}
     >
       {(formik) => (
         <div>
-          <h1 className="my-4 font-weight-bold-display-4">Sign up</h1>
+          <h1 className="my-4 font-weight-bold-display-4">Sign in</h1>
           <Form>
-            <InputField label="First name" name="firstName" type="text" />
-            <InputField label="Last name" name="lastName" type="text" />
             <InputField label="Email" name="email" type="email" />
             <InputField label="Password" name="password" type="password" />
             <div className="btn-toolbar">
               <button className="btn btn-dark btn-sm mt-3" type="submit">
-                Register
+                Login
               </button>
               <button className="btn btn-danger btn-sm mt-3 mr-3s" type="reset">
                 Reset
@@ -44,4 +39,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default LoginForm;
