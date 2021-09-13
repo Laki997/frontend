@@ -1,5 +1,6 @@
 import { createSelector } from "reselect";
 
-const getToken = (state) => state.loginReducer.token;
+const selectLogin = (state) => state.loginReducer;
 
-export const token = () => createSelector(getToken, (substate) => substate);
+export const selectToken = () =>
+  createSelector(selectLogin, (substate) => substate.token);

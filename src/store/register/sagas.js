@@ -1,6 +1,8 @@
 import authService from "../../services/authService";
 import { REGISTER_USER } from "./actionTypes";
-import { takeLatest } from "@redux-saga/core/effects";
+import { put, takeLatest } from "@redux-saga/core/effects";
+import { push } from "connected-react-router";
+import { ROUTES } from "../../constants";
 
 export function* registerWithCredentials({
   payload: { firstName, lastName, password, email },
@@ -12,6 +14,7 @@ export function* registerWithCredentials({
       password,
       email,
     });
+    yield put(push(ROUTES.LOGIN));
   } catch (error) {
     console.log(error.data);
   }
