@@ -1,8 +1,10 @@
 import { fork } from "@redux-saga/core/effects";
-import { watchRegisterSaga } from "./register/sagas";
-import { watchLoginSaga } from "./login/sagas";
+import { registerSaga } from "./register/sagas";
+import { loginSaga } from "./login/sagas";
+import { addMovieSaga } from "./movies/sagas";
 
 export default function* rootSaga() {
-  yield fork(watchLoginSaga);
-  yield fork(watchRegisterSaga);
+  yield fork(loginSaga);
+  yield fork(registerSaga);
+  yield fork(addMovieSaga);
 }

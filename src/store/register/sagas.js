@@ -20,6 +20,6 @@ export function* registerWithCredentials({
   }
 }
 
-export function* watchRegisterSaga() {
+export function* registerSaga() {
   yield takeLatest(REGISTER_USER, registerWithCredentials);
 }
