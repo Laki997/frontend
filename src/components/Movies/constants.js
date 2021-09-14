@@ -6,8 +6,20 @@ export const MOVIE_ENTITY = {
 };
 
 export const MOVIE_GENRE = {
-  DRAMA: "DRAMA",
-  COMEDY: "COMEDY",
-  SF: "SF",
-  HOROR: "HOROR",
+  DRAMA: {
+    VALUE: "DRAMA",
+    LABEL: "Drama",
+  },
+  COMEDY: {
+    VALUE: "COMEDY",
+    LABEL: "Comedy",
+  },
+  SF: {
+    VALUE: "SF",
+    LABEL: "SF",
+  },
+  HOROR: {
+    VALUE: "HOROR",
+    LABEL: "Horor",
+  },
 };

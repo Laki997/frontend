@@ -30,10 +30,18 @@ const MovieForm = () => {
             <InputField label="Description" name="description" type="text" />
             <InputField label="Cover image" name="coverImage" type="url" />
             <Select label="Genre" name="genre">
-              <option value={MOVIE_GENRE.SF}>{MOVIE_GENRE.SF}</option>
-              <option value={MOVIE_GENRE.DRAMA}>{MOVIE_GENRE.DRAMA}</option>
-              <option value={MOVIE_GENRE.COMEDY}>{MOVIE_GENRE.COMEDY}</option>
-              <option value={MOVIE_GENRE.HOROR}>{MOVIE_GENRE.HOROR}</option>
+              <option value={MOVIE_GENRE.DRAMA.VALUE}>
+                {MOVIE_GENRE.DRAMA.LABEL}
+              </option>
+              <option value={MOVIE_GENRE.COMEDY.VALUE}>
+                {MOVIE_GENRE.COMEDY.LABEL}
+              </option>
+              <option value={MOVIE_GENRE.SF.VALUE}>
+                {MOVIE_GENRE.SF.LABEL}
+              </option>
+              <option value={MOVIE_GENRE.HOROR.VALUE}>
+                {MOVIE_GENRE.HOROR.LABEL}
+              </option>
             </Select>
 
             <div className="btn-toolbar">
