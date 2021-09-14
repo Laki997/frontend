@@ -16,12 +16,12 @@ export function* loginWithCredentials({ payload: { email, password } }) {
     yield put(setToken(access));
     yield call(setItem, "refresh_token", refresh);
     yield put(setRefreshToken(refresh));
-    yield put(push(ROUTES.MOVIES));
+    yield put(push(ROUTES.MOVIE_LIST));
   } catch (error) {
     console.log(error);
   }
 }
 
-export function* watchLoginSaga() {
+export function* loginSaga() {
   yield takeLatest(LOGIN_USER, loginWithCredentials);
 }

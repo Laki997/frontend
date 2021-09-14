@@ -14,12 +14,12 @@ export function* addMovie({
       description,
       genre,
     });
-    yield put(push(ROUTES.MOVIES));
+    yield put(push(ROUTES.MOVIE_LIST));
   } catch (error) {
     console.log(error);
   }
 }
 
-export function* watchAddMovieSaga() {
+export function* addMovieSaga() {
   yield takeLatest(CREATE_MOVIE, addMovie);
 }

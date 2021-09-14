@@ -11,8 +11,6 @@ export const INITIAL_STATE = {
 const loginReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case LOGIN_USER:
-      console.log(INITIAL_STATE.token);
-      console.log(INITIAL_STATE.refreshToken);
       return {
         ...state,
         user: action.payload,
