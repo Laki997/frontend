@@ -26,9 +26,13 @@ export function* addMovie({
   }
 }
 
-export function* getMovies(currentPage, searchParam) {
+export function* getMovies(currentPage, searchParam, filterParam) {
   try {
-    const data = yield movieService.getMovies(currentPage, searchParam);
+    const data = yield movieService.getMovies(
+      currentPage,
+      searchParam,
+      filterParam
+    );
     yield put(setMoviesAction(data.results));
     yield put(setNextPage(data.next));
     yield put(setPreviousPage(data.previous));

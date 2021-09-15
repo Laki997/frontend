@@ -19,7 +19,6 @@ export const INITIAL_STATE = {
 };
 
 const movieReducer = (state = INITIAL_STATE, action) => {
-  console.log(action.filterParam);
   switch (action.type) {
     case GET_MOVIES_SUCCESS:
       return {
@@ -62,11 +61,6 @@ const movieReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         filterParam: action.filterParam,
-        movies: state.movies.filter((movie) => {
-          // console.log(action.filterParam);
-          // console.log(state.movies);
-          return movie.genre === action.filterParam;
-        }),
       };
     }
 

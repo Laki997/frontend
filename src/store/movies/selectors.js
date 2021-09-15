@@ -22,7 +22,3 @@ export const selectSearchParam = () =>
 
 export const selectFilterParam = () =>
   createSelector(selectMovie, (substate) => substate.filterParam);
-
-// export const selectFilteredMovies = () => {
-//   createSelector(selectMovie, (substate) => substate.filteredMovies);
-// };

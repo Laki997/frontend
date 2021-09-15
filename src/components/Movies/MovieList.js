@@ -43,13 +43,13 @@ const MovieList = () => {
   }, 750);
 
   useEffect(() => {
-    dispatch(getMoviesAction(currentPage, searchParam));
+    dispatch(getMoviesAction(currentPage, searchParam, filterParam));
   }, [currentPage, searchParam, filterParam]);
 
   const renderMovieList = movies.map((movie) => (
     <MovieItem key={movie.id} movie={movie} />
   ));
-  console.log(movies);
+
   return (
     <div>
       <div>

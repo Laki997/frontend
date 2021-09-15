@@ -16,10 +16,11 @@ export const createMovieAction = (movie) => ({
   payload: movie,
 });
 
-export const getMoviesAction = (currentPage, searchParam) => ({
+export const getMoviesAction = (currentPage, searchParam, filterParam) => ({
   type: GET_MOVIES,
   currentPage,
   searchParam,
+  filterParam,
 });
 
 export const setMoviesAction = (movies) => ({
