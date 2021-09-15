@@ -11,9 +11,9 @@ class MovieService extends BaseService {
     const { data } = await this.client.post(ENDPOINTS.CREATE_MOVIE, movie);
     return data;
   }
-  async getMovies({ currentPage }) {
+  async getMovies({ currentPage, searchParam }) {
     const { data } = await this.client.get(ENDPOINTS.MOVIES, {
-      params: { page: currentPage },
+      params: { page: currentPage, search: searchParam },
     });
     return data;
   }

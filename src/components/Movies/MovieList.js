@@ -1,11 +1,17 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getMoviesAction, setCurrentPage } from "../../store/movies/actions";
+import { debounce } from "lodash";
+import {
+  getMoviesAction,
+  setCurrentPage,
+  setSearchParam,
+} from "../../store/movies/actions";
 import {
   selectMovies,
   selectCurrentPage,
   selectNextPage,
   selectPreviousPage,
+  selectSearchParam,
 } from "../../store/movies/selectors";
 import MovieItem from "./MovieItem";
 const MovieList = () => {
@@ -14,6 +20,7 @@ const MovieList = () => {
   const currentPage = useSelector(selectCurrentPage());
   const nextPage = useSelector(selectNextPage());
   const previousPage = useSelector(selectPreviousPage());
+  const searchParam = useSelector(selectSearchParam());
 
   const handlePreviousButton = () => {
     dispatch(setCurrentPage(currentPage - 1));
@@ -23,15 +30,22 @@ const MovieList = () => {
     dispatch(setCurrentPage(currentPage + 1));
   };
 
+  const handleInputChange = debounce((e) => {
+    dispatch(setSearchParam(e.target.value));
+  }, 750);
+
   useEffect(() => {
-    dispatch(getMoviesAction(currentPage));
-  }, [currentPage]);
+    dispatch(getMoviesAction(currentPage, searchParam));
+  }, [currentPage, searchParam]);
   const renderMovieList = movies.map((movie) => (
     <MovieItem key={movie.id} movie={movie} />
   ));
 
   return (
     <div>
+      <div>
+        <input type="text" onChange={handleInputChange} name="search" />
+      </div>
       <ul>{renderMovieList}</ul>
       <button disabled={!previousPage} onClick={handlePreviousButton}>
         Previuos
