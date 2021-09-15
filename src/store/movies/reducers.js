@@ -10,6 +10,7 @@ export const INITIAL_STATE = {
   movies: [],
   movie: {},
   currentPage: 1,
+  nextPage: null,
   previousPage: null,
 };
 
