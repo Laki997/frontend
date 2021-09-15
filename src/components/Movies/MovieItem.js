@@ -7,7 +7,7 @@ const MovieItem = ({ movie }) => {
       <div>
         <Link to={`movies/${movie.id}`}>{movie.title}</Link>
       </div>
-      <img src={movie.cover_image} alt="img"></img>
+      <img src={movie.cover_image} alt="img" height="200px" width="200px"></img>
     </li>
   );
 };
