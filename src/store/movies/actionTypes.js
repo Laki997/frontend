@@ -3,3 +3,6 @@ export const GET_MOVIES = "GET_MOVIES";
 export const GET_MOVIES_SUCCESS = "GET_MOVIES_SUCCESS";
 export const GET_MOVIE = "GET_MOVIE";
 export const GET_MOVIE_SUCCESS = "GET_MOVIE_SUCCESS";
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+export const SET_NEXT_PAGE = "SET_NEXT_PAGE";
+export const SET_PREVIOUS_PAGE = "SET_PREVIOUS_PAGE";
