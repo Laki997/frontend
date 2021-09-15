@@ -3,4 +3,5 @@ export const ROUTES = {
   REGISTER: "/register",
   CREATE_MOVIE: "/create",
   MOVIE_LIST: "/",
+  MOVIE_DETAIL_PAGE: "/movies/:id",
 };

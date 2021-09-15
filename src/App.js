@@ -9,12 +9,15 @@ import { ROUTES } from "../src/constants";
 import MovieForm from "./components/Movies/MovieForm";
 import { ConnectedRouter } from "connected-react-router";
 import { history } from "./store";
+import MovieDetailPage from "./components/Movies/MovieDetailPage";
+import Header from "./components/Layouts/Header";
 function App() {
   return (
     <ConnectedRouter history={history}>
       <div className="container mt-3">
         <div className="row">
           <div className="col-md-5">
+            <Header />
             <Switch>
               <PrivateRoute
                 component={MovieForm}
@@ -37,6 +40,12 @@ function App() {
                 restricted={true}
                 component={MovieList}
                 path={ROUTES.MOVIE_LIST}
+                exact
+              />
+              <PrivateRoute
+                restricted={true}
+                component={MovieDetailPage}
+                path={ROUTES.MOVIE_DETAIL_PAGE}
                 exact
               />
             </Switch>

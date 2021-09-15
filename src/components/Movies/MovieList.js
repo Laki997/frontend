@@ -1,9 +1,19 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getMoviesAction } from "../../store/movies/actions";
+import { selectMovies } from "../../store/movies/selectors";
+import MovieItem from "./MovieItem";
 const MovieList = () => {
-  return (
-    <div>
-      <h1>Movie List</h1>
-    </div>
-  );
+  const dispatch = useDispatch();
+  const movies = useSelector(selectMovies());
+
+  useEffect(() => {
+    dispatch(getMoviesAction());
+  }, []);
+  const renderMovieList = movies.map((movie) => (
+    <MovieItem key={movie.id} movie={movie} />
+  ));
+  return <ul>{renderMovieList}</ul>;
 };
 
 export default MovieList;
