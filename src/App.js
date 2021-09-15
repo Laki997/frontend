@@ -17,9 +17,7 @@ function App() {
       <div className="container mt-3">
         <div className="row">
           <div className="col-md-5">
-            <div>
-              <Header />
-            </div>
+            <Header />
             <Switch>
               <PrivateRoute
                 component={MovieForm}

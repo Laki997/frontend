@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const MovieItem = (props) => {
+const MovieItem = ({ props }) => {
   return (
     <li>
       <div>{props.description}</div>

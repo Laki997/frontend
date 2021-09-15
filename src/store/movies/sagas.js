@@ -2,7 +2,7 @@ import movieService from "../../services/movieService";
 import { CREATE_MOVIE, GET_MOVIE, GET_MOVIES } from "./actionTypes";
 import { takeLatest, put } from "@redux-saga/core/effects";
 import { push } from "connected-react-router";
-import { getMovieActionSuccess, getMoviesActionSuccess } from "./actions";
+import { setMoviesAction, setSingleMovieAction } from "./actions";
 import { ROUTES } from "../../constants";
 
 export function* addMovie({
@@ -24,7 +24,7 @@ export function* addMovie({
 export function* getMovies() {
   try {
     const data = yield movieService.getMovies();
-    yield put(getMoviesActionSuccess(data));
+    yield put(setMoviesAction(data));
   } catch (error) {
     console.log(error);
   }
@@ -33,7 +33,7 @@ export function* getMovies() {
 export function* getMovie(id) {
   try {
     const data = yield movieService.getMovie(id);
-    yield put(getMovieActionSuccess(data));
+    yield put(setSingleMovieAction(data));
   } catch (error) {
     console.log(error);
   }

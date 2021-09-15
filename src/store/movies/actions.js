@@ -15,17 +15,17 @@ export const getMoviesAction = () => ({
   type: GET_MOVIES,
 });
 
-export const getMoviesActionSuccess = (movies) => ({
+export const setMoviesAction = (movies) => ({
   type: GET_MOVIES_SUCCESS,
   movies,
 });
 
-export const getMovieAction = (id) => ({
+export const getSingleMovie = (id) => ({
   type: GET_MOVIE,
   id,
 });
 
-export const getMovieActionSuccess = (movie) => ({
+export const setSingleMovieAction = (movie) => ({
   type: GET_MOVIE_SUCCESS,
   movie,
 });

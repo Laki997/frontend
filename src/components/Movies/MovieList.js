@@ -10,17 +10,10 @@ const MovieList = () => {
   useEffect(() => {
     dispatch(getMoviesAction());
   }, []);
-  const movieList = movies.map((movie) => (
-    <MovieItem
-      key={movie.id}
-      id={movie.id}
-      title={movie.title}
-      description={movie.description}
-      genre={movie.genre}
-      cover_image={movie.cover_image}
-    />
+  const renderMovieList = movies.map((movie) => (
+    <MovieItem key={movie.id} props={movie} />
   ));
-  return <ul>{movieList}</ul>;
+  return <ul>{renderMovieList}</ul>;
 };
 
 export default MovieList;
