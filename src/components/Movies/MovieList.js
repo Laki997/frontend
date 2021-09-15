@@ -30,8 +30,8 @@ const MovieList = () => {
     dispatch(setCurrentPage(currentPage + 1));
   };
 
-  const handleInputChange = debounce((e) => {
-    dispatch(setSearchParam(e.target.value));
+  const handleInputChange = debounce(({ target }) => {
+    dispatch(setSearchParam(target.value));
   }, 750);
 
   useEffect(() => {
