@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 
-const MovieItem = ({ props }) => {
+const MovieItem = ({ movie }) => {
   return (
     <li>
-      <div>{props.description}</div>
+      <div>{movie.description}</div>
       <div>
-        <Link to={`movies/${props.id}`}>{props.title}</Link>
+        <Link to={`movies/${movie.id}`}>{movie.title}</Link>
       </div>
-      <img src={props.cover_image} alt="img"></img>
+      <img src={movie.cover_image} alt="img"></img>
     </li>
   );
 };

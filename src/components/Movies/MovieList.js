@@ -11,7 +11,7 @@ const MovieList = () => {
     dispatch(getMoviesAction());
   }, []);
   const renderMovieList = movies.map((movie) => (
-    <MovieItem key={movie.id} props={movie} />
+    <MovieItem key={movie.id} movie={movie} />
   ));
   return <ul>{renderMovieList}</ul>;
 };
