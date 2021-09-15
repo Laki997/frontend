@@ -33,7 +33,6 @@ export function* getMovies() {
 export function* getMovie(id) {
   try {
     const data = yield movieService.getMovie(id);
-    console.log(data);
     yield put(getMovieActionSuccess(data));
   } catch (error) {
     console.log(error);

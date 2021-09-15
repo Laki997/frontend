@@ -10,12 +10,16 @@ import MovieForm from "./components/Movies/MovieForm";
 import { ConnectedRouter } from "connected-react-router";
 import { history } from "./store";
 import MovieDetailPage from "./components/Movies/MovieDetailPage";
+import Header from "./components/Layouts/Header";
 function App() {
   return (
     <ConnectedRouter history={history}>
       <div className="container mt-3">
         <div className="row">
           <div className="col-md-5">
+            <div>
+              <Header />
+            </div>
             <Switch>
               <PrivateRoute
                 component={MovieForm}

@@ -17,9 +17,7 @@ class MovieService extends BaseService {
   }
 
   async getMovie({ id }) {
-    console.log(id);
     const { data } = await this.client.get(`${ENDPOINTS.MOVIE}${id}/`);
-    console.log(data);
     return data;
   }
 }
