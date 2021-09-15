@@ -11,6 +11,7 @@ class BaseService {
 
       if (token) {
         request.headers["Authorization"] = `Bearer ${token}`;
+        // request.headers["Access-Control-Allow-Origin"] = "*";
       }
 
       return request;

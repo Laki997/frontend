@@ -9,6 +9,7 @@ import { ROUTES } from "../src/constants";
 import MovieForm from "./components/Movies/MovieForm";
 import { ConnectedRouter } from "connected-react-router";
 import { history } from "./store";
+import MovieDetailPage from "./components/Movies/MovieDetailPage";
 function App() {
   return (
     <ConnectedRouter history={history}>
@@ -37,6 +38,12 @@ function App() {
                 restricted={true}
                 component={MovieList}
                 path={ROUTES.MOVIE_LIST}
+                exact
+              />
+              <PrivateRoute
+                restricted={true}
+                component={MovieDetailPage}
+                path={ROUTES.MOVIE_DETAIL_PAGE}
                 exact
               />
             </Switch>
