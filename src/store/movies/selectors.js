@@ -19,3 +19,6 @@ export const selectPreviousPage = () =>
 
 export const selectSearchParam = () =>
   createSelector(selectMovie, (substate) => substate.searchParam);
+
+export const selectFilterParam = () =>
+  createSelector(selectMovie, (substate) => substate.filterParam);

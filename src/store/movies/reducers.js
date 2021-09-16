@@ -5,6 +5,7 @@ import {
   SET_NEXT_PAGE,
   SET_PREVIOUS_PAGE,
   SET_SEARCH_PARAM,
+  SET_FILTER_PARAM,
 } from "./actionTypes";
 
 export const INITIAL_STATE = {
@@ -14,6 +15,7 @@ export const INITIAL_STATE = {
   nextPage: null,
   previousPage: null,
   searchParam: "",
+  filterParam: "",
 };
 
 const movieReducer = (state = INITIAL_STATE, action) => {
@@ -49,13 +51,19 @@ const movieReducer = (state = INITIAL_STATE, action) => {
         previousPage: action.previousPage,
       };
     }
-
     case SET_SEARCH_PARAM: {
       return {
         ...state,
         searchParam: action.searchParam,
       };
     }
+    case SET_FILTER_PARAM: {
+      return {
+        ...state,
+        filterParam: action.filterParam,
+      };
+    }
+
     default:
       return state;
   }

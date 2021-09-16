@@ -8,6 +8,7 @@ import {
   SET_NEXT_PAGE,
   SET_PREVIOUS_PAGE,
   SET_SEARCH_PARAM,
+  SET_FILTER_PARAM,
 } from "./actionTypes";
 
 export const createMovieAction = (movie) => ({
@@ -15,10 +16,11 @@ export const createMovieAction = (movie) => ({
   payload: movie,
 });
 
-export const getMoviesAction = (currentPage, searchParam) => ({
+export const getMoviesAction = (currentPage, searchParam, filterParam) => ({
   type: GET_MOVIES,
   currentPage,
   searchParam,
+  filterParam,
 });
 
 export const setMoviesAction = (movies) => ({
@@ -54,4 +56,9 @@ export const setPreviousPage = (previousPage) => ({
 export const setSearchParam = (searchParam) => ({
   type: SET_SEARCH_PARAM,
   searchParam,
+});
+
+export const setSearchFilter = (filterParam) => ({
+  type: SET_FILTER_PARAM,
+  filterParam,
 });
