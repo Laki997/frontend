@@ -13,7 +13,7 @@ class MovieService extends BaseService {
   }
   async getMovies({ currentPage, searchParam, filterParam }) {
     const { data } = await this.client.get(ENDPOINTS.MOVIES, {
-      params: { page: currentPage, title: searchParam, genre: filterParam },
+      params: { page: currentPage, search: searchParam, genre: filterParam },
     });
     return data;
   }

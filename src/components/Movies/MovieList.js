@@ -46,6 +46,8 @@ const MovieList = () => {
     dispatch(getMoviesAction(currentPage, searchParam, filterParam));
   }, [currentPage, searchParam, filterParam]);
 
+  console.log(movies);
+
   const renderMovieList = movies.map((movie) => (
     <MovieItem key={movie.id} movie={movie} />
   ));
