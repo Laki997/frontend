@@ -1,5 +1,10 @@
 import movieService from "../../services/movieService";
-import { CREATE_MOVIE, GET_MOVIE, GET_MOVIES } from "./actionTypes";
+import {
+  CREATE_MOVIE,
+  CREATE_MOVIE_REACTION,
+  GET_MOVIE,
+  GET_MOVIES,
+} from "./actionTypes";
 import { takeLatest, put } from "@redux-saga/core/effects";
 import { push } from "connected-react-router";
 import {
@@ -50,8 +55,15 @@ export function* getMovie(id) {
   }
 }
 
+export function* createMovieReaction(movieId, reaction) {
+  try {
+    const data = yield movieService.creteMovieReaction(movieId, reaction);
+  } catch (error) {}
+}
+
 export function* movieSaga() {
   yield takeLatest(CREATE_MOVIE, addMovie);
   yield takeLatest(GET_MOVIES, getMovies);
   yield takeLatest(GET_MOVIE, getMovie);
+  yield takeLatest(CREATE_MOVIE_REACTION, createMovieReaction);
 }

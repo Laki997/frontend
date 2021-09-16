@@ -4,6 +4,7 @@ const ENDPOINTS = {
   CREATE_MOVIE: "api/movies/",
   MOVIES: "api/movies/",
   MOVIE: "api/movies/",
+  CREATE_MOVIE_REACTION: "api/movies/reaction/",
 };
 
 class MovieService extends BaseService {
@@ -20,6 +21,16 @@ class MovieService extends BaseService {
 
   async getMovie({ id }) {
     const { data } = await this.client.get(`${ENDPOINTS.MOVIE}${id}/`);
+    return data;
+  }
+
+  async creteMovieReaction({ movieId, reaction }) {
+    console.log(movieId, reaction);
+    const { data } = await this.client.post(
+      `${ENDPOINTS.CREATE_MOVIE_REACTION}`,
+      movieId,
+      reaction
+    );
     return data;
   }
 }

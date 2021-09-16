@@ -9,6 +9,7 @@ import {
   SET_PREVIOUS_PAGE,
   SET_SEARCH_PARAM,
   SET_FILTER_PARAM,
+  CREATE_MOVIE_REACTION,
 } from "./actionTypes";
 
 export const createMovieAction = (movie) => ({
@@ -61,4 +62,10 @@ export const setSearchParam = (searchParam) => ({
 export const setSearchFilter = (filterParam) => ({
   type: SET_FILTER_PARAM,
   filterParam,
+});
+
+export const createMovieReaction = (movieId, reaction) => ({
+  type: CREATE_MOVIE_REACTION,
+  movieId,
+  reaction,
 });
