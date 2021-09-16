@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../constants";
 import { selectToken } from "../../store/login/selectors";
-// import "./style.scss";
 
 const Header = () => {
   const token = useSelector(selectToken());
