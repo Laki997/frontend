@@ -55,10 +55,13 @@ export function* getMovie(id) {
   }
 }
 
-export function* createMovieReaction(movieId, reaction) {
+export function* createMovieReaction({ payload }) {
+  console.log(payload);
   try {
-    const data = yield movieService.creteMovieReaction(movieId, reaction);
-  } catch (error) {}
+    const data = yield movieService.creteMovieReaction(payload);
+  } catch (error) {
+    console.log("cao");
+  }
 }
 
 export function* movieSaga() {

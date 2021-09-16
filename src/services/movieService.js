@@ -24,12 +24,11 @@ class MovieService extends BaseService {
     return data;
   }
 
-  async creteMovieReaction({ movieId, reaction }) {
-    console.log(movieId, reaction);
+  async creteMovieReaction(payload) {
+    console.log(payload);
     const { data } = await this.client.post(
       `${ENDPOINTS.CREATE_MOVIE_REACTION}`,
-      movieId,
-      reaction
+      payload
     );
     return data;
   }

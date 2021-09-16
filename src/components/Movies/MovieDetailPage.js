@@ -9,15 +9,12 @@ const MovieDetailPage = () => {
   const movie = useSelector(selectOneMovie());
   const params = useParams();
 
-  const handlerLike = (reaction) => {
-    dispatch(createMovieReaction(movie.id, reaction));
+  const handleClick = (reaction) => {
+    const payload = { movieId: movie.id, reaction };
+    dispatch(createMovieReaction(payload));
     console.log(reaction);
   };
 
-  const handlerDislike = (reaction) => {
-    dispatch(createMovieReaction(movie.id, reaction));
-    console.log(reaction);
-  };
   useEffect(() => {
     dispatch(getSingleMovie(params.id));
   }, []);
@@ -28,10 +25,10 @@ const MovieDetailPage = () => {
       <h2>{movie.description}</h2>
       <h4>{movie.genre}</h4>
       <img alt="img" src={movie.cover_image}></img>
-      <button onClick={handlerLike(true)} className="btn btn-primary">
+      <button onClick={() => handleClick(true)} className="btn btn-primary">
         Like
       </button>
-      <button onClick={handlerDislike(false)} className="btn btn-danger">
+      <button onClick={() => handleClick(false)} className="btn btn-danger">
         Dislike
       </button>
     </div>

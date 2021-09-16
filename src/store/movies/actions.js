@@ -64,8 +64,7 @@ export const setSearchFilter = (filterParam) => ({
   filterParam,
 });
 
-export const createMovieReaction = (movieId, reaction) => ({
+export const createMovieReaction = (payload) => ({
   type: CREATE_MOVIE_REACTION,
-  movieId,
-  reaction,
+  payload,
 });
