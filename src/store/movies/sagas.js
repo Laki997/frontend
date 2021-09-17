@@ -60,7 +60,7 @@ export function* createMovieReaction({ payload }) {
   try {
     const data = yield movieService.creteMovieReaction(payload);
   } catch (error) {
-    console.log("cao");
+    console.log(error);
   }
 }
 

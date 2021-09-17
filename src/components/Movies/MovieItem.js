@@ -19,6 +19,12 @@ const MovieItem = ({ movie }) => {
         </div>
         <div className="blur_back bright_back"></div>
       </div>
+      <div>
+        <h2>Likes: {movie.likes}</h2>
+      </div>
+      <div>
+        <h2>Dislikes: {movie.dislikes}</h2>
+      </div>
     </div>
   );
 };

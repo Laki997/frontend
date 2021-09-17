@@ -10,9 +10,8 @@ const MovieDetailPage = () => {
   const params = useParams();
 
   const handleClick = (reaction) => {
-    const payload = { movieId: movie.id, reaction };
+    const payload = { movie: movie.id, reaction };
     dispatch(createMovieReaction(payload));
-    console.log(reaction);
   };
 
   useEffect(() => {
@@ -24,7 +23,9 @@ const MovieDetailPage = () => {
       <h1>{movie.title}</h1>
       <h2>{movie.description}</h2>
       <h4>{movie.genre}</h4>
-      <img alt="img" src={movie.cover_image}></img>
+      <h3>Likes:{movie.likes}</h3>
+      <h3>Dislikes:{movie.dislikes}</h3>
+      <img alt="img" src={movie.cover_image} height="200px" width="200px"></img>
       <button onClick={() => handleClick(true)} className="btn btn-primary">
         Like
       </button>

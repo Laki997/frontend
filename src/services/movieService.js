@@ -25,7 +25,6 @@ class MovieService extends BaseService {
   }
 
   async creteMovieReaction(payload) {
-    console.log(payload);
     const { data } = await this.client.post(
       `${ENDPOINTS.CREATE_MOVIE_REACTION}`,
       payload
