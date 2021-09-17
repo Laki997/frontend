@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { getSingleMovie } from "../../store/movies/actions";
 import { selectOneMovie } from "../../store/movies/selectors";
 import { createMovieReaction } from "../../store/movies/actions";
+import CommentForm from "../Comments/CommentsForm";
+
 const MovieDetailPage = () => {
   const dispatch = useDispatch();
   const movie = useSelector(selectOneMovie());
@@ -20,9 +22,17 @@ const MovieDetailPage = () => {
 
   return (
     <div>
-      <h1>{movie.title}</h1>
-      <h2>{movie.description}</h2>
-      <h4>{movie.genre}</h4>
+      <h1>Title:{movie.title}</h1>
+      <h2>Description:{movie.description}</h2>
+      <h4>Genre:{movie.genre}</h4>
+      <CommentForm id={params.id} />
+      <h2>Comments</h2>
+      <ul>
+        {movie.comments &&
+          movie.comments.map((comment) => {
+            return <li key={comment.id}>{comment.content}</li>;
+          })}
+      </ul>
       <h3>Likes:{movie.likes}</h3>
       <h3>Dislikes:{movie.dislikes}</h3>
       <h3>Views: {movie.view_count}</h3>

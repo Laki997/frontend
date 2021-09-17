@@ -10,6 +10,7 @@ import {
   SET_SEARCH_PARAM,
   SET_FILTER_PARAM,
   CREATE_MOVIE_REACTION,
+  CREATE_COMMENT,
 } from "./actionTypes";
 
 export const createMovieAction = (movie) => ({
@@ -66,5 +67,10 @@ export const setSearchFilter = (filterParam) => ({
 
 export const createMovieReaction = (payload) => ({
   type: CREATE_MOVIE_REACTION,
+  payload,
+});
+
+export const createCommentAction = (payload) => ({
+  type: CREATE_COMMENT,
   payload,
 });
