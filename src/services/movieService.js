@@ -29,6 +29,7 @@ class MovieService extends BaseService {
       `${ENDPOINTS.CREATE_MOVIE_REACTION}`,
       payload
     );
+
     return data;
   }
 }

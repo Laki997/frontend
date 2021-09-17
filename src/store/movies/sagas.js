@@ -56,9 +56,9 @@ export function* getMovie(id) {
 }
 
 export function* createMovieReaction({ payload }) {
-  console.log(payload);
   try {
     const data = yield movieService.creteMovieReaction(payload);
+    yield put(setSingleMovieAction(data));
   } catch (error) {
     console.log(error);
   }
