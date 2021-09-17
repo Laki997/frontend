@@ -5,11 +5,18 @@ const ENDPOINTS = {
   MOVIES: "api/movies/",
   MOVIE: "api/movies/",
   CREATE_MOVIE_REACTION: "api/movies/reaction/",
+  CREATE_COMMENT: "api/comments/",
 };
 
 class MovieService extends BaseService {
   async createMovie(movie) {
     const { data } = await this.client.post(ENDPOINTS.CREATE_MOVIE, movie);
+    return data;
+  }
+
+  async createComment(comment) {
+    const { data } = await this.client.post(ENDPOINTS.CREATE_COMMENT, comment);
+
     return data;
   }
   async getMovies({ currentPage, searchParam, filterParam }) {

@@ -1,5 +1,6 @@
 import movieService from "../../services/movieService";
 import {
+  CREATE_COMMENT,
   CREATE_MOVIE,
   CREATE_MOVIE_REACTION,
   GET_MOVIE,
@@ -26,6 +27,14 @@ export function* addMovie({
       genre,
     });
     yield put(push(ROUTES.MOVIE_LIST));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function* addComment({ payload: { movie, content } }) {
+  try {
+    yield movieService.createComment({ movie, content });
   } catch (error) {
     console.log(error);
   }
@@ -69,4 +78,5 @@ export function* movieSaga() {
   yield takeLatest(GET_MOVIES, getMovies);
   yield takeLatest(GET_MOVIE, getMovie);
   yield takeLatest(CREATE_MOVIE_REACTION, createMovieReaction);
+  yield takeLatest(CREATE_COMMENT, addComment);
 }
