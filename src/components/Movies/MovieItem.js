@@ -25,6 +25,9 @@ const MovieItem = ({ movie }) => {
       <div>
         <h2>Dislikes: {movie.dislikes}</h2>
       </div>
+      <div>
+        <h2>Views: {movie.view_count}</h2>
+      </div>
     </div>
   );
 };
