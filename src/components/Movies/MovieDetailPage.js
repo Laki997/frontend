@@ -25,6 +25,7 @@ const MovieDetailPage = () => {
       <h4>{movie.genre}</h4>
       <h3>Likes:{movie.likes}</h3>
       <h3>Dislikes:{movie.dislikes}</h3>
+      <h3>Views: {movie.view_count}</h3>
       <img alt="img" src={movie.cover_image} height="200px" width="200px"></img>
       <button onClick={() => handleClick(true)} className="btn btn-primary">
         Like
