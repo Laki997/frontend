@@ -28,7 +28,6 @@ const MovieDetailPage = () => {
       <CommentForm id={params.id} />
       <h2>Comments</h2>
       <ul>
-        {}
         {movie.comments &&
           movie.comments.map((comment) => {
             return <li key={comment.id}>{comment.content}</li>;

@@ -9,12 +9,11 @@ const CommentForm = ({ id }) => {
   return (
     <Formik
       initialValues={{
-        movie: id,
         content: "",
       }}
       validationSchema={validate}
       onSubmit={(values, { resetForm }) => {
-        dispatch(createCommentAction(values));
+        dispatch(createCommentAction({ ...values, ...{ movie: id } }));
         resetForm();
       }}
     >
