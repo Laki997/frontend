@@ -2,12 +2,14 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
+  createWatchListAction,
   getSingleMovie,
   setCurrentCommentPage,
 } from "../../store/movies/actions";
 import {
   selectComments,
   selectCurrentCommentPage,
+  selectCurrentWatchListFlag,
   selectNextCommentPage,
   selectOneMovie,
 } from "../../store/movies/selectors";
@@ -22,12 +24,18 @@ const MovieDetailPage = () => {
   const movie = useSelector(selectOneMovie());
   const currentCommentPage = useSelector(selectCurrentCommentPage());
   const nextCommentPage = useSelector(selectNextCommentPage());
+  const currentWatchListFlag = useSelector(selectCurrentWatchListFlag());
   const comments = useSelector(selectComments());
   const params = useParams();
 
   const handleClick = (reaction) => {
     const payload = { movie: movie.id, reaction };
     dispatch(createMovieReaction(payload));
+  };
+
+  const handleWatchList = (watched) => {
+    const payload = { movie: movie.id, watched };
+    dispatch(createWatchListAction(payload));
   };
 
   const handleLoadMoreClick = () => {
@@ -37,8 +45,9 @@ const MovieDetailPage = () => {
   useEffect(() => {
     dispatch(getSingleMovie(params.id));
     dispatch(getCommentsAction(params.id, currentCommentPage));
-  }, [currentCommentPage]);
-
+  }, [currentCommentPage, currentWatchListFlag]);
+  console.log(movie);
+  console.log(currentWatchListFlag);
   return (
     <div>
       {movie && (
@@ -55,6 +64,11 @@ const MovieDetailPage = () => {
             height="200px"
             width="200px"
           ></img>
+          {currentWatchListFlag && (
+            <div>
+              <h1>YOU HAVE WATCHED THIS MOVIE FROM YOUR WATCHLIST! </h1>
+            </div>
+          )}
         </div>
       )}
 
@@ -63,6 +77,12 @@ const MovieDetailPage = () => {
       </button>
       <button onClick={() => handleClick(false)} className="btn btn-danger">
         Dislike
+      </button>
+      <button
+        onClick={() => handleWatchList(!movie.gledao[0].watched)}
+        className="btn btn-success"
+      >
+        Watchlist
       </button>
       <CommentForm id={params.id} />
       <h2>Comments</h2>

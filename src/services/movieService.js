@@ -7,6 +7,7 @@ const ENDPOINTS = {
   CREATE_MOVIE_REACTION: "api/movies/reaction/",
   CREATE_COMMENT: "api/comments/",
   GET_COMMENTS: "api/comments/",
+  CREATE_WATCHLIST: "api/movies/watchlist/",
 };
 
 class MovieService extends BaseService {
@@ -28,12 +29,22 @@ class MovieService extends BaseService {
 
   async getMovie({ id }) {
     const { data } = await this.client.get(`${ENDPOINTS.MOVIE}${id}/`);
+    console.log(data);
     return data;
   }
 
   async creteMovieReaction(payload) {
     const { data } = await this.client.post(
       `${ENDPOINTS.CREATE_MOVIE_REACTION}`,
+      payload
+    );
+    return data;
+  }
+
+  async createWatchList(payload) {
+    console.log(payload);
+    const { data } = await this.client.post(
+      `${ENDPOINTS.CREATE_WATCHLIST}`,
       payload
     );
     return data;

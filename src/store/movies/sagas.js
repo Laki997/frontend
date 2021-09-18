@@ -6,11 +6,13 @@ import {
   GET_COMMENTS_ACTION,
   GET_MOVIE,
   GET_MOVIES,
+  CREATE_WATCHLIST_ACTION,
 } from "./actionTypes";
 import { takeLatest, put } from "@redux-saga/core/effects";
 import { push } from "connected-react-router";
 import {
   setCommentsAction,
+  setCurrentWatchListFlag,
   setMoviesAction,
   setNextCommentPage,
   setNextPage,
@@ -63,6 +65,8 @@ export function* getMovie(id) {
   try {
     const data = yield movieService.getMovie(id);
     yield put(setSingleMovieAction(data));
+    console.log(data.gledao[0].watched);
+    yield put(setCurrentWatchListFlag(data.gledao[0].watched));
   } catch (error) {
     console.log(error);
   }
@@ -71,6 +75,17 @@ export function* getMovie(id) {
 export function* createMovieReaction({ payload }) {
   try {
     const data = yield movieService.creteMovieReaction(payload);
+    yield put(setSingleMovieAction(data));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function* createWatchListAction({ payload }) {
+  console.log(payload);
+  try {
+    const data = yield movieService.createWatchList(payload);
+    yield put(setCurrentWatchListFlag(data.gledao[0].watched));
     yield put(setSingleMovieAction(data));
   } catch (error) {
     console.log(error);
@@ -94,4 +109,5 @@ export function* movieSaga() {
   yield takeLatest(CREATE_MOVIE_REACTION, createMovieReaction);
   yield takeLatest(CREATE_COMMENT, addComment);
   yield takeLatest(GET_COMMENTS_ACTION, getComments);
+  yield takeLatest(CREATE_WATCHLIST_ACTION, createWatchListAction);
 }

@@ -15,6 +15,8 @@ import {
   SET_COMMENTS_ACTION,
   SET_CURRENT_COMMENT_PAGE,
   SET_NEXT_COMMENT_PAGE,
+  CREATE_WATCHLIST_ACTION,
+  SET_CURRENT_WATCHLIST_FLAG,
 } from "./actionTypes";
 
 export const createMovieAction = (movie) => ({
@@ -98,4 +100,14 @@ export const setCurrentCommentPage = (currentCommentPage) => ({
 export const setNextCommentPage = (nextCommentPage) => ({
   type: SET_NEXT_COMMENT_PAGE,
   nextCommentPage,
+});
+
+export const createWatchListAction = (payload) => ({
+  type: CREATE_WATCHLIST_ACTION,
+  payload,
+});
+
+export const setCurrentWatchListFlag = (payload) => ({
+  type: SET_CURRENT_WATCHLIST_FLAG,
+  payload,
 });

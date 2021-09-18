@@ -9,6 +9,7 @@ import {
   SET_COMMENTS_ACTION,
   SET_CURRENT_COMMENT_PAGE,
   SET_NEXT_COMMENT_PAGE,
+  SET_CURRENT_WATCHLIST_FLAG,
 } from "./actionTypes";
 
 export const INITIAL_STATE = {
@@ -22,6 +23,7 @@ export const INITIAL_STATE = {
   comments: [],
   currentCommentPage: 1,
   nextCommentPage: null,
+  currentWatchListFlag: null,
 };
 
 const movieReducer = (state = INITIAL_STATE, action) => {
@@ -85,6 +87,12 @@ const movieReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         nextCommentPage: action.nextCommentPage,
+      };
+    }
+    case SET_CURRENT_WATCHLIST_FLAG: {
+      return {
+        ...state,
+        currentWatchListFlag: action.payload,
       };
     }
     default:
