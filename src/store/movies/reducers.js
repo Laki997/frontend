@@ -76,10 +76,9 @@ const movieReducer = (state = INITIAL_STATE, action) => {
       };
     }
     case SET_COMMENTS_ACTION: {
-      const oldComments = state.comments;
       return {
         ...state,
-        comments: [...oldComments, ...action.payload],
+        comments: [...state.comments, ...action.payload],
       };
     }
     case SET_NEXT_COMMENT_PAGE: {
