@@ -11,6 +11,10 @@ import {
   SET_FILTER_PARAM,
   CREATE_MOVIE_REACTION,
   CREATE_COMMENT,
+  GET_COMMENTS_ACTION,
+  SET_COMMENTS_ACTION,
+  SET_CURRENT_COMMENT_PAGE,
+  SET_NEXT_COMMENT_PAGE,
 } from "./actionTypes";
 
 export const createMovieAction = (movie) => ({
@@ -73,4 +77,25 @@ export const createMovieReaction = (payload) => ({
 export const createCommentAction = (payload) => ({
   type: CREATE_COMMENT,
   payload,
+});
+
+export const getCommentsAction = (payload, currentCommentPage) => ({
+  type: GET_COMMENTS_ACTION,
+  payload,
+  currentCommentPage,
+});
+
+export const setCommentsAction = (payload) => ({
+  type: SET_COMMENTS_ACTION,
+  payload,
+});
+
+export const setCurrentCommentPage = (currentCommentPage) => ({
+  type: SET_CURRENT_COMMENT_PAGE,
+  currentCommentPage,
+});
+
+export const setNextCommentPage = (nextCommentPage) => ({
+  type: SET_NEXT_COMMENT_PAGE,
+  nextCommentPage,
 });

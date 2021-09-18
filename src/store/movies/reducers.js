@@ -6,6 +6,9 @@ import {
   SET_PREVIOUS_PAGE,
   SET_SEARCH_PARAM,
   SET_FILTER_PARAM,
+  SET_COMMENTS_ACTION,
+  SET_CURRENT_COMMENT_PAGE,
+  SET_NEXT_COMMENT_PAGE,
 } from "./actionTypes";
 
 export const INITIAL_STATE = {
@@ -16,6 +19,9 @@ export const INITIAL_STATE = {
   previousPage: null,
   searchParam: "",
   filterParam: "",
+  comments: [],
+  currentCommentPage: 1,
+  nextCommentPage: null,
 };
 
 const movieReducer = (state = INITIAL_STATE, action) => {
@@ -63,7 +69,25 @@ const movieReducer = (state = INITIAL_STATE, action) => {
         filterParam: action.filterParam,
       };
     }
-
+    case SET_CURRENT_COMMENT_PAGE: {
+      return {
+        ...state,
+        currentCommentPage: action.currentCommentPage,
+      };
+    }
+    case SET_COMMENTS_ACTION: {
+      const oldComments = state.comments;
+      return {
+        ...state,
+        comments: [...oldComments, ...action.payload],
+      };
+    }
+    case SET_NEXT_COMMENT_PAGE: {
+      return {
+        ...state,
+        nextCommentPage: action.nextCommentPage,
+      };
+    }
     default:
       return state;
   }

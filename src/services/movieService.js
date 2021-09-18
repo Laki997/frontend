@@ -6,6 +6,7 @@ const ENDPOINTS = {
   MOVIE: "api/movies/",
   CREATE_MOVIE_REACTION: "api/movies/reaction/",
   CREATE_COMMENT: "api/comments/",
+  GET_COMMENTS: "api/comments/",
 };
 
 class MovieService extends BaseService {
@@ -16,7 +17,6 @@ class MovieService extends BaseService {
 
   async createComment(comment) {
     const { data } = await this.client.post(ENDPOINTS.CREATE_COMMENT, comment);
-
     return data;
   }
   async getMovies({ currentPage, searchParam, filterParam }) {
@@ -36,7 +36,13 @@ class MovieService extends BaseService {
       `${ENDPOINTS.CREATE_MOVIE_REACTION}`,
       payload
     );
+    return data;
+  }
 
+  async getComments(payload, currentCommentPage) {
+    const { data } = await this.client.get(ENDPOINTS.GET_COMMENTS, {
+      params: { movie: payload, page: currentCommentPage },
+    });
     return data;
   }
 }

@@ -1,4 +1,5 @@
 import { createSelector } from "reselect";
+import { create } from "yup/lib/Reference";
 
 const selectMovie = (state) => state.movieReducer;
 
@@ -22,3 +23,12 @@ export const selectSearchParam = () =>
 
 export const selectFilterParam = () =>
   createSelector(selectMovie, (substate) => substate.filterParam);
+
+export const selectComments = () =>
+  createSelector(selectMovie, (substate) => substate.comments);
+
+export const selectCurrentCommentPage = () =>
+  createSelector(selectMovie, (substate) => substate.currentCommentPage);
+
+export const selectNextCommentPage = () =>
+  createSelector(selectMovie, (substate) => substate.nextCommentPage);

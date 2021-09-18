@@ -3,13 +3,16 @@ import {
   CREATE_COMMENT,
   CREATE_MOVIE,
   CREATE_MOVIE_REACTION,
+  GET_COMMENTS_ACTION,
   GET_MOVIE,
   GET_MOVIES,
 } from "./actionTypes";
 import { takeLatest, put } from "@redux-saga/core/effects";
 import { push } from "connected-react-router";
 import {
+  setCommentsAction,
   setMoviesAction,
+  setNextCommentPage,
   setNextPage,
   setPreviousPage,
   setSingleMovieAction,
@@ -47,6 +50,7 @@ export function* getMovies(currentPage, searchParam, filterParam) {
       searchParam,
       filterParam
     );
+
     yield put(setMoviesAction(data.results));
     yield put(setNextPage(data.next));
     yield put(setPreviousPage(data.previous));
@@ -73,10 +77,21 @@ export function* createMovieReaction({ payload }) {
   }
 }
 
+export function* getComments({ payload, currentCommentPage }) {
+  try {
+    const data = yield movieService.getComments(payload, currentCommentPage);
+    yield put(setCommentsAction(data.results));
+    yield put(setNextCommentPage(data.next));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export function* movieSaga() {
   yield takeLatest(CREATE_MOVIE, addMovie);
   yield takeLatest(GET_MOVIES, getMovies);
   yield takeLatest(GET_MOVIE, getMovie);
   yield takeLatest(CREATE_MOVIE_REACTION, createMovieReaction);
   yield takeLatest(CREATE_COMMENT, addComment);
+  yield takeLatest(GET_COMMENTS_ACTION, getComments);
 }
