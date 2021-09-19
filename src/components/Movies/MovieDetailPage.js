@@ -52,12 +52,9 @@ const MovieDetailPage = () => {
   }, [currentCommentPage]);
 
   const addNewCommentHandler = (comment) => {
-    console.log(comment);
-
     dispatch(addNewComment(comment.content));
   };
 
-  console.log(movie);
   return (
     <div>
       {movie && (
@@ -104,7 +101,6 @@ const MovieDetailPage = () => {
       <ul>
         {comments &&
           comments.map((comment) => {
-            console.log(comment);
             return <li key={comment.id}>{comment.content}</li>;
           })}
       </ul>
