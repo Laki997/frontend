@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getRelatedMovies } from "../../store/movies/actions";
 import { selectRelatedMovies } from "../../store/movies/selectors";
+import { RiFilmLine } from "react-icons/ri";
 
 const RelatedMovies = (id) => {
   const dispatch = useDispatch();
@@ -19,7 +20,10 @@ const RelatedMovies = (id) => {
           return (
             <Link key={movie.id} to={`movies/${movie.id}`}>
               <li>
-                <h2>{movie.title}</h2>
+                <h2>
+                  <RiFilmLine />
+                  {movie.title}
+                </h2>
               </li>
             </Link>
           );
