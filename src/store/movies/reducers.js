@@ -11,6 +11,7 @@ import {
   SET_NEXT_COMMENT_PAGE,
   SET_CURRENT_WATCHLIST_FLAG,
   SET_POPULAR_MOVIES,
+  SET_RELATED_MOVIES,
 } from "./actionTypes";
 
 export const INITIAL_STATE = {
@@ -26,6 +27,7 @@ export const INITIAL_STATE = {
   nextCommentPage: null,
   currentWatchListFlag: null,
   popularMovies: [],
+  relatedMovies: [],
 };
 
 const movieReducer = (state = INITIAL_STATE, action) => {
@@ -101,6 +103,12 @@ const movieReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         popularMovies: action.popularMovies,
+      };
+    }
+    case SET_RELATED_MOVIES: {
+      return {
+        ...state,
+        relatedMovies: action.relatedMovies,
       };
     }
     default:

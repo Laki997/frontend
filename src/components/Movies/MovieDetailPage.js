@@ -18,6 +18,7 @@ import {
   getCommentsAction,
 } from "../../store/movies/actions";
 import CommentForm from "../Comments/CommentsForm";
+import RelatedMovies from "./RelatedMovies";
 
 const MovieDetailPage = () => {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ const MovieDetailPage = () => {
   }, [currentCommentPage, currentWatchListFlag]);
   return (
     <div>
+      <RelatedMovies id={params.id} />
       {movie && (
         <div>
           <h1>Title:{movie.title}</h1>

@@ -7,7 +7,7 @@ import { selectPopularMovies } from "../../store/movies/selectors";
 const PopularMovies = () => {
   const popularMovies = useSelector(selectPopularMovies());
   return (
-    <div>
+    <div className="sidebar">
       <ul>
         <h2>Popular Movies</h2>
         {popularMovies.map((movie) => {

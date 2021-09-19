@@ -8,6 +8,7 @@ import {
   GET_MOVIES,
   CREATE_WATCHLIST_ACTION,
   GET_POPULAR_MOVIES,
+  GET_RELATED_MOVIES,
 } from "./actionTypes";
 import { takeLatest, put } from "@redux-saga/core/effects";
 import { push } from "connected-react-router";
@@ -19,6 +20,7 @@ import {
   setNextPage,
   setPopularMovies,
   setPreviousPage,
+  setRelatedMovies,
   setSingleMovieAction,
 } from "./actions";
 import { ROUTES } from "../../constants";
@@ -105,8 +107,15 @@ export function* getComments({ payload, currentCommentPage }) {
 export function* getPopularMovies() {
   try {
     const data = yield movieService.getPopularMovies();
-
     yield put(setPopularMovies(data));
+  } catch (error) {
+    console.log(error);
+  }
+}
+export function* getRelatedMovies(id) {
+  try {
+    const data = yield movieService.getRelatedMovies(id);
+    yield put(setRelatedMovies(data));
   } catch (error) {
     console.log(error);
   }
@@ -121,4 +130,5 @@ export function* movieSaga() {
   yield takeLatest(GET_COMMENTS_ACTION, getComments);
   yield takeLatest(CREATE_WATCHLIST_ACTION, createWatchListAction);
   yield takeLatest(GET_POPULAR_MOVIES, getPopularMovies);
+  yield takeLatest(GET_RELATED_MOVIES, getRelatedMovies);
 }

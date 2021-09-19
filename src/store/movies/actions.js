@@ -19,6 +19,8 @@ import {
   SET_CURRENT_WATCHLIST_FLAG,
   GET_POPULAR_MOVIES,
   SET_POPULAR_MOVIES,
+  GET_RELATED_MOVIES,
+  SET_RELATED_MOVIES,
 } from "./actionTypes";
 
 export const createMovieAction = (movie) => ({
@@ -121,4 +123,14 @@ export const getPopularMovies = () => ({
 export const setPopularMovies = (popularMovies) => ({
   type: SET_POPULAR_MOVIES,
   popularMovies,
+});
+
+export const getRelatedMovies = (id) => ({
+  type: GET_RELATED_MOVIES,
+  id,
+});
+
+export const setRelatedMovies = (relatedMovies) => ({
+  type: SET_RELATED_MOVIES,
+  relatedMovies,
 });
