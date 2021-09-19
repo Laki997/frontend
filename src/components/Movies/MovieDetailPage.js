@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import {
   createWatchListAction,
   getSingleMovie,
+  addNewComment,
   setCurrentCommentPage,
 } from "../../store/movies/actions";
 import {
@@ -44,8 +45,19 @@ const MovieDetailPage = () => {
 
   useEffect(() => {
     dispatch(getSingleMovie(params.id));
+  }, [currentWatchListFlag]);
+
+  useEffect(() => {
     dispatch(getCommentsAction(params.id, currentCommentPage));
-  }, [currentCommentPage, currentWatchListFlag]);
+  }, [currentCommentPage]);
+
+  const addNewCommentHandler = (comment) => {
+    console.log(comment);
+
+    dispatch(addNewComment(comment.content));
+  };
+
+  console.log(movie);
   return (
     <div>
       {movie && (
@@ -82,16 +94,17 @@ const MovieDetailPage = () => {
         Dislike
       </button>
       <button
-        onClick={() => handleWatchList(!movie.isWatched[0].watched)}
+        onClick={() => handleWatchList(!movie?.isWatched[0]?.watched)}
         className="btn btn-success"
       >
         Watchlist
       </button>
-      <CommentForm id={params.id} />
+      <CommentForm id={params.id} onSubmitComment={addNewCommentHandler} />
       <h2>Comments</h2>
       <ul>
         {comments &&
           comments.map((comment) => {
+            console.log(comment);
             return <li key={comment.id}>{comment.content}</li>;
           })}
       </ul>

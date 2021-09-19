@@ -17,6 +17,7 @@ import {
   SET_NEXT_COMMENT_PAGE,
   CREATE_WATCHLIST_ACTION,
   SET_CURRENT_WATCHLIST_FLAG,
+  SET_NEW_COMMENT,
 } from "./actionTypes";
 
 export const createMovieAction = (movie) => ({
@@ -90,6 +91,11 @@ export const getCommentsAction = (payload, currentCommentPage) => ({
 export const setCommentsAction = (payload) => ({
   type: SET_COMMENTS_ACTION,
   payload,
+});
+
+export const addNewComment = (comment) => ({
+  type: SET_NEW_COMMENT,
+  comment,
 });
 
 export const setCurrentCommentPage = (currentCommentPage) => ({
