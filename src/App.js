@@ -11,12 +11,12 @@ import { ConnectedRouter } from "connected-react-router";
 import { history } from "./store";
 import MovieDetailPage from "./components/Movies/MovieDetailPage";
 import Header from "./components/Layouts/Header";
+
 function App() {
   return (
     <ConnectedRouter history={history}>
       <div className="container mt-3">
         <div className="row">
-          <div className="col-md-3"></div>
           <div className="col-md-5">
             <Header />
             <Switch>

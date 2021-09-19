@@ -8,6 +8,7 @@ const ENDPOINTS = {
   CREATE_COMMENT: "api/comments/",
   GET_COMMENTS: "api/comments/",
   CREATE_WATCHLIST: "api/movies/watchlist/",
+  POPULAR_MOVIES: "api/movies/popular/",
 };
 
 class MovieService extends BaseService {
@@ -52,6 +53,12 @@ class MovieService extends BaseService {
     const { data } = await this.client.get(ENDPOINTS.GET_COMMENTS, {
       params: { movie: payload, page: currentCommentPage },
     });
+    return data;
+  }
+
+  async getPopularMovies() {
+    const { data } = await this.client.get(ENDPOINTS.POPULAR_MOVIES);
+
     return data;
   }
 }
