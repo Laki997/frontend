@@ -65,8 +65,6 @@ export function* getMovie(id) {
   try {
     const data = yield movieService.getMovie(id);
     yield put(setSingleMovieAction(data));
-    console.log(data.gledao[0].watched);
-    yield put(setCurrentWatchListFlag(data.gledao[0].watched));
   } catch (error) {
     console.log(error);
   }
@@ -85,7 +83,7 @@ export function* createWatchListAction({ payload }) {
   console.log(payload);
   try {
     const data = yield movieService.createWatchList(payload);
-    yield put(setCurrentWatchListFlag(data.gledao[0].watched));
+    yield put(setCurrentWatchListFlag(data.isWatched[0].watched));
     yield put(setSingleMovieAction(data));
   } catch (error) {
     console.log(error);

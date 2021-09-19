@@ -46,8 +46,6 @@ const MovieDetailPage = () => {
     dispatch(getSingleMovie(params.id));
     dispatch(getCommentsAction(params.id, currentCommentPage));
   }, [currentCommentPage, currentWatchListFlag]);
-  console.log(movie);
-  console.log(currentWatchListFlag);
   return (
     <div>
       {movie && (
@@ -69,6 +67,11 @@ const MovieDetailPage = () => {
               <h1>YOU HAVE WATCHED THIS MOVIE FROM YOUR WATCHLIST! </h1>
             </div>
           )}
+          {!currentWatchListFlag && (
+            <div>
+              <h1>YOU HAVE NOOOOT WATCHED THIS MOVIE FROM YOUR WATCHLIST! </h1>
+            </div>
+          )}
         </div>
       )}
 
@@ -79,7 +82,7 @@ const MovieDetailPage = () => {
         Dislike
       </button>
       <button
-        onClick={() => handleWatchList(!movie.gledao[0].watched)}
+        onClick={() => handleWatchList(!movie.isWatched[0].watched)}
         className="btn btn-success"
       >
         Watchlist

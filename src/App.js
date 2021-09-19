@@ -16,6 +16,7 @@ function App() {
     <ConnectedRouter history={history}>
       <div className="container mt-3">
         <div className="row">
+          <div className="col-md-3"></div>
           <div className="col-md-5">
             <Header />
             <Switch>

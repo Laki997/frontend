@@ -29,7 +29,6 @@ class MovieService extends BaseService {
 
   async getMovie({ id }) {
     const { data } = await this.client.get(`${ENDPOINTS.MOVIE}${id}/`);
-    console.log(data);
     return data;
   }
 
@@ -42,7 +41,6 @@ class MovieService extends BaseService {
   }
 
   async createWatchList(payload) {
-    console.log(payload);
     const { data } = await this.client.post(
       `${ENDPOINTS.CREATE_WATCHLIST}`,
       payload

@@ -1,11 +1,7 @@
 import { Link } from "react-router-dom";
 import "./style.scss";
-import { useSelector } from "react-redux";
-import { selectCurrentWatchListFlag } from "../../store/movies/selectors";
 
 const MovieItem = ({ movie }) => {
-  const currentWatchListFlag = useSelector(selectCurrentWatchListFlag());
-
   return (
     <div>
       <div className="movie_card" id="bright">
@@ -32,11 +28,12 @@ const MovieItem = ({ movie }) => {
       <div>
         <h2>Views: {movie.view_count}</h2>
       </div>
-      {movie.gledao[0].watched && (
+      {/* {notWatched}
+      {movie.isWatched[0].watched && (
         <div>
           <h1>YOU HAVE JUST WATCHED THIS MOVIE FROM YOUR WATCHLIST! </h1>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
