@@ -17,7 +17,12 @@ import {
   SET_NEXT_COMMENT_PAGE,
   CREATE_WATCHLIST_ACTION,
   SET_CURRENT_WATCHLIST_FLAG,
+  GET_POPULAR_MOVIES,
+  SET_POPULAR_MOVIES,
+  GET_RELATED_MOVIES,
+  SET_RELATED_MOVIES,
   SET_NEW_COMMENT,
+
 } from "./actionTypes";
 
 export const createMovieAction = (movie) => ({
@@ -116,4 +121,23 @@ export const createWatchListAction = (payload) => ({
 export const setCurrentWatchListFlag = (payload) => ({
   type: SET_CURRENT_WATCHLIST_FLAG,
   payload,
+});
+
+export const getPopularMovies = () => ({
+  type: GET_POPULAR_MOVIES,
+});
+
+export const setPopularMovies = (popularMovies) => ({
+  type: SET_POPULAR_MOVIES,
+  popularMovies,
+});
+
+export const getRelatedMovies = (id) => ({
+  type: GET_RELATED_MOVIES,
+  id,
+});
+
+export const setRelatedMovies = (relatedMovies) => ({
+  type: SET_RELATED_MOVIES,
+  relatedMovies,
 });

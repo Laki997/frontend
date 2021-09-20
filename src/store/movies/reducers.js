@@ -10,6 +10,8 @@ import {
   SET_CURRENT_COMMENT_PAGE,
   SET_NEXT_COMMENT_PAGE,
   SET_CURRENT_WATCHLIST_FLAG,
+  SET_POPULAR_MOVIES,
+  SET_RELATED_MOVIES,
   SET_NEW_COMMENT,
 } from "./actionTypes";
 
@@ -25,6 +27,8 @@ export const INITIAL_STATE = {
   currentCommentPage: 1,
   nextCommentPage: null,
   currentWatchListFlag: null,
+  popularMovies: [],
+  relatedMovies: [],
 };
 
 const movieReducer = (state = INITIAL_STATE, action) => {
@@ -100,6 +104,18 @@ const movieReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         currentWatchListFlag: action.payload,
+      };
+    }
+    case SET_POPULAR_MOVIES: {
+      return {
+        ...state,
+        popularMovies: action.popularMovies,
+      };
+    }
+    case SET_RELATED_MOVIES: {
+      return {
+        ...state,
+        relatedMovies: action.relatedMovies,
       };
     }
     default:

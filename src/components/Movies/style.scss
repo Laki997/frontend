@@ -8,10 +8,33 @@
 html,
 body {
   margin: 0;
-  background: black;
+  background: white;
   font-family: "Montserrat", helvetica, arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
+}
+
+.header_container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  height: 64px;
+  background-color: rgb(29, 69, 145);
+  margin-bottom: 2rem;
+
+  a {
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+  }
+}
+
+.sidebar {
+  position: fixed;
+  top: 90px;
+  right: 30px;
 }
 
 .movie_card {
@@ -112,7 +135,7 @@ body {
 
 @media screen and (min-width: 768px) {
   .movie_header {
-    width: 60%;
+    width: 100%;
   }
 
   .movie_desc {

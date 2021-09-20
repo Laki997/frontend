@@ -20,8 +20,7 @@ import {
   getCommentsAction,
 } from "../../store/movies/actions";
 import CommentForm from "../Comments/CommentsForm";
-import { BsFillBookmarkFill } from "react-icons/bs";
-import { AiFillLike, AiFillDislike } from "react-icons/ai";
+
 const MovieDetailPage = () => {
   const dispatch = useDispatch();
   const movie = useSelector(selectOneMovie());
@@ -59,6 +58,7 @@ const MovieDetailPage = () => {
 
   return (
     <div>
+      <RelatedMovies id={params.id} />
       {movie && (
         <div>
           <h1>Title:{movie.title}</h1>
