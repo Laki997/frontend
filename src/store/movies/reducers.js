@@ -9,6 +9,10 @@ import {
   SET_COMMENTS_ACTION,
   SET_CURRENT_COMMENT_PAGE,
   SET_NEXT_COMMENT_PAGE,
+  SET_CURRENT_WATCHLIST_FLAG,
+  SET_POPULAR_MOVIES,
+  SET_RELATED_MOVIES,
+  SET_NEW_COMMENT,
 } from "./actionTypes";
 
 export const INITIAL_STATE = {
@@ -22,6 +26,9 @@ export const INITIAL_STATE = {
   comments: [],
   currentCommentPage: 1,
   nextCommentPage: null,
+  currentWatchListFlag: null,
+  popularMovies: [],
+  relatedMovies: [],
 };
 
 const movieReducer = (state = INITIAL_STATE, action) => {
@@ -81,10 +88,34 @@ const movieReducer = (state = INITIAL_STATE, action) => {
         comments: [...state.comments, ...action.payload],
       };
     }
+    case SET_NEW_COMMENT: {
+      return {
+        ...state,
+        comments: [...state.comments, { content: action.comment }],
+      };
+    }
     case SET_NEXT_COMMENT_PAGE: {
       return {
         ...state,
         nextCommentPage: action.nextCommentPage,
+      };
+    }
+    case SET_CURRENT_WATCHLIST_FLAG: {
+      return {
+        ...state,
+        currentWatchListFlag: action.payload,
+      };
+    }
+    case SET_POPULAR_MOVIES: {
+      return {
+        ...state,
+        popularMovies: action.popularMovies,
+      };
+    }
+    case SET_RELATED_MOVIES: {
+      return {
+        ...state,
+        relatedMovies: action.relatedMovies,
       };
     }
     default:

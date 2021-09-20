@@ -15,6 +15,14 @@ import {
   SET_COMMENTS_ACTION,
   SET_CURRENT_COMMENT_PAGE,
   SET_NEXT_COMMENT_PAGE,
+  CREATE_WATCHLIST_ACTION,
+  SET_CURRENT_WATCHLIST_FLAG,
+  GET_POPULAR_MOVIES,
+  SET_POPULAR_MOVIES,
+  GET_RELATED_MOVIES,
+  SET_RELATED_MOVIES,
+  SET_NEW_COMMENT,
+
 } from "./actionTypes";
 
 export const createMovieAction = (movie) => ({
@@ -90,6 +98,11 @@ export const setCommentsAction = (payload) => ({
   payload,
 });
 
+export const addNewComment = (comment) => ({
+  type: SET_NEW_COMMENT,
+  comment,
+});
+
 export const setCurrentCommentPage = (currentCommentPage) => ({
   type: SET_CURRENT_COMMENT_PAGE,
   currentCommentPage,
@@ -98,4 +111,33 @@ export const setCurrentCommentPage = (currentCommentPage) => ({
 export const setNextCommentPage = (nextCommentPage) => ({
   type: SET_NEXT_COMMENT_PAGE,
   nextCommentPage,
+});
+
+export const createWatchListAction = (payload) => ({
+  type: CREATE_WATCHLIST_ACTION,
+  payload,
+});
+
+export const setCurrentWatchListFlag = (payload) => ({
+  type: SET_CURRENT_WATCHLIST_FLAG,
+  payload,
+});
+
+export const getPopularMovies = () => ({
+  type: GET_POPULAR_MOVIES,
+});
+
+export const setPopularMovies = (popularMovies) => ({
+  type: SET_POPULAR_MOVIES,
+  popularMovies,
+});
+
+export const getRelatedMovies = (id) => ({
+  type: GET_RELATED_MOVIES,
+  id,
+});
+
+export const setRelatedMovies = (relatedMovies) => ({
+  type: SET_RELATED_MOVIES,
+  relatedMovies,
 });

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./style.scss";
+import Watched from "../shared/Watched";
 
 const MovieItem = ({ movie }) => {
   return (
@@ -28,6 +29,7 @@ const MovieItem = ({ movie }) => {
       <div>
         <h2>Views: {movie.view_count}</h2>
       </div>
+      <Watched watched={movie?.isWatched[0]?.watched} />
     </div>
   );
 };

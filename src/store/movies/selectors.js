@@ -32,3 +32,15 @@ export const selectCurrentCommentPage = () =>
 
 export const selectNextCommentPage = () =>
   createSelector(selectMovie, (substate) => substate.nextCommentPage);
+
+export const selectCurrentWatchListFlag = () =>
+  createSelector(selectMovie, (substate) => substate.currentWatchListFlag);
+
+export const selectPopularMovies = () =>
+  createSelector(selectMovie, (substate) => substate.popularMovies);
+
+export const selectRelatedMovies = () =>
+  createSelector(selectMovie, (substate) => substate.relatedMovies);
+
+// export const selectCurrentWatchListFlag = () =>
+//   createSelector(selectMovie, (substate) => substate.movie.gledao[0].watched);
