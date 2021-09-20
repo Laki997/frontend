@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { AiFillStar } from "react-icons/ai";
 
 const PopularMovies = ({ popularMovies }) => {
   return (
@@ -8,9 +9,10 @@ const PopularMovies = ({ popularMovies }) => {
         {popularMovies.map((movie) => {
           return (
             <Link key={movie.id} to={`movies/${movie.id}`}>
-              <AiFillStar>
-                <h3>{movie.title}</h3>
-              </AiFillStar>
+              <h2>
+                <AiFillStar />
+                {movie.title}
+              </h2>
             </Link>
           );
         })}

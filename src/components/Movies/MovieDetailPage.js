@@ -2,6 +2,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Watched from "../shared/Watched";
+import RelatedMovies from "./RelatedMovies";
+import { BsFillBookmarkFill } from "react-icons/bs";
+import { AiFillLike, AiFillDislike } from "react-icons/ai";
+
 import {
   createWatchListAction,
   getSingleMovie,
