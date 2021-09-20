@@ -4,7 +4,7 @@ import TextAreaField from "../shared/formik/textarea";
 import { validate } from "./validation";
 import { createCommentAction } from "../../store/movies/actions";
 
-const CommentForm = ({ id }) => {
+const CommentForm = ({ id, onSubmitComment }) => {
   const dispatch = useDispatch();
   return (
     <Formik
@@ -14,6 +14,7 @@ const CommentForm = ({ id }) => {
       validationSchema={validate}
       onSubmit={(values, { resetForm }) => {
         dispatch(createCommentAction({ ...values, ...{ movie: id } }));
+        onSubmitComment(values);
         resetForm();
       }}
     >

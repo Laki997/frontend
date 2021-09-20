@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import Watched from "../shared/Watched";
 import {
   createWatchListAction,
   getSingleMovie,
+  addNewComment,
   setCurrentCommentPage,
 } from "../../store/movies/actions";
 import {
@@ -18,7 +20,6 @@ import {
   getCommentsAction,
 } from "../../store/movies/actions";
 import CommentForm from "../Comments/CommentsForm";
-import RelatedMovies from "./RelatedMovies";
 
 const MovieDetailPage = () => {
   const dispatch = useDispatch();
@@ -45,8 +46,16 @@ const MovieDetailPage = () => {
 
   useEffect(() => {
     dispatch(getSingleMovie(params.id));
+  }, [currentWatchListFlag]);
+
+  useEffect(() => {
     dispatch(getCommentsAction(params.id, currentCommentPage));
-  }, [currentCommentPage, currentWatchListFlag]);
+  }, [currentCommentPage]);
+
+  const addNewCommentHandler = (comment) => {
+    dispatch(addNewComment(comment.content));
+  };
+
   return (
     <div>
       <RelatedMovies id={params.id} />
@@ -64,32 +73,19 @@ const MovieDetailPage = () => {
             height="200px"
             width="200px"
           ></img>
-          {currentWatchListFlag && (
-            <div>
-              <h1>YOU HAVE WATCHED THIS MOVIE FROM YOUR WATCHLIST! </h1>
-            </div>
-          )}
-          {!currentWatchListFlag && (
-            <div>
-              <h1>YOU HAVE NOOOOT WATCHED THIS MOVIE FROM YOUR WATCHLIST! </h1>
-            </div>
-          )}
+          <Watched watched={currentWatchListFlag} />
         </div>
       )}
 
-      <button onClick={() => handleClick(true)} className="btn btn-primary">
-        Like
-      </button>
-      <button onClick={() => handleClick(false)} className="btn btn-danger">
-        Dislike
-      </button>
-      <button
-        onClick={() => handleWatchList(!movie.isWatched[0].watched)}
-        className="btn btn-success"
+      <AiFillLike onClick={() => handleClick(true)}>Like</AiFillLike>
+      <AiFillDislike onClick={() => handleClick(false)}>Dislike</AiFillDislike>
+      <BsFillBookmarkFill
+        onClick={() => handleWatchList(!movie?.isWatched[0]?.watched)}
+        type="button"
       >
         Watchlist
-      </button>
-      <CommentForm id={params.id} />
+      </BsFillBookmarkFill>
+      <CommentForm id={params.id} onSubmitComment={addNewCommentHandler} />
       <h2>Comments</h2>
       <ul>
         {comments &&

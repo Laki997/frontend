@@ -12,6 +12,7 @@ import {
   SET_CURRENT_WATCHLIST_FLAG,
   SET_POPULAR_MOVIES,
   SET_RELATED_MOVIES,
+  SET_NEW_COMMENT,
 } from "./actionTypes";
 
 export const INITIAL_STATE = {
@@ -85,6 +86,12 @@ const movieReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         comments: [...state.comments, ...action.payload],
+      };
+    }
+    case SET_NEW_COMMENT: {
+      return {
+        ...state,
+        comments: [...state.comments, { content: action.comment }],
       };
     }
     case SET_NEXT_COMMENT_PAGE: {

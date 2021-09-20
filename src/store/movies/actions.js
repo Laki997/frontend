@@ -21,6 +21,8 @@ import {
   SET_POPULAR_MOVIES,
   GET_RELATED_MOVIES,
   SET_RELATED_MOVIES,
+  SET_NEW_COMMENT,
+
 } from "./actionTypes";
 
 export const createMovieAction = (movie) => ({
@@ -94,6 +96,11 @@ export const getCommentsAction = (payload, currentCommentPage) => ({
 export const setCommentsAction = (payload) => ({
   type: SET_COMMENTS_ACTION,
   payload,
+});
+
+export const addNewComment = (comment) => ({
+  type: SET_NEW_COMMENT,
+  comment,
 });
 
 export const setCurrentCommentPage = (currentCommentPage) => ({
