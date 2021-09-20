@@ -19,7 +19,8 @@ import {
   getCommentsAction,
 } from "../../store/movies/actions";
 import CommentForm from "../Comments/CommentsForm";
-
+import { BsFillBookmarkFill } from "react-icons/bs";
+import { AiFillLike, AiFillDislike } from "react-icons/ai";
 const MovieDetailPage = () => {
   const dispatch = useDispatch();
   const movie = useSelector(selectOneMovie());
@@ -73,29 +74,37 @@ const MovieDetailPage = () => {
           ></img>
           {currentWatchListFlag && (
             <div>
-              <h1>YOU HAVE WATCHED THIS MOVIE FROM YOUR WATCHLIST! </h1>
+              <h3>
+                You have
+                <span>
+                  <strong> watched </strong>
+                </span>
+                this movie from your watchlist!
+              </h3>
             </div>
           )}
           {!currentWatchListFlag && (
             <div>
-              <h1>YOU HAVE NOOOOT WATCHED THIS MOVIE FROM YOUR WATCHLIST! </h1>
+              <h3>
+                You have
+                <span>
+                  <strong> not </strong>
+                </span>
+                watched this movie from your watchlist!
+              </h3>
             </div>
           )}
         </div>
       )}
 
-      <button onClick={() => handleClick(true)} className="btn btn-primary">
-        Like
-      </button>
-      <button onClick={() => handleClick(false)} className="btn btn-danger">
-        Dislike
-      </button>
-      <button
+      <AiFillLike onClick={() => handleClick(true)}>Like</AiFillLike>
+      <AiFillDislike onClick={() => handleClick(false)}>Dislike</AiFillDislike>
+      <BsFillBookmarkFill
         onClick={() => handleWatchList(!movie?.isWatched[0]?.watched)}
-        className="btn btn-success"
+        type="button"
       >
         Watchlist
-      </button>
+      </BsFillBookmarkFill>
       <CommentForm id={params.id} onSubmitComment={addNewCommentHandler} />
       <h2>Comments</h2>
       <ul>
