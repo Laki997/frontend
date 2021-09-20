@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getPopularMovies } from "../../store/movies/actions";
 import { selectPopularMovies } from "../../store/movies/selectors";
+import { AiFillStar } from "react-icons/ai";
 
 const PopularMovies = () => {
   const popularMovies = useSelector(selectPopularMovies());
@@ -12,10 +13,10 @@ const PopularMovies = () => {
         <h2>Popular Movies</h2>
         {popularMovies.map((movie) => {
           return (
-            <Link to={`movies/${movie.id}`}>
-              <li key={movie.id}>
+            <Link key={movie.id} to={`movies/${movie.id}`}>
+              <AiFillStar>
                 <h3>{movie.title}</h3>
-              </li>
+              </AiFillStar>
             </Link>
           );
         })}
