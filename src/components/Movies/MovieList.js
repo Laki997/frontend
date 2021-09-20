@@ -49,7 +49,7 @@ const MovieList = () => {
     setSearchOMDB(target.value);
   };
 
-  const handleGetDataFromOMDBApi = () => {
+  const handleCreateFromOMDB = () => {
     dispatch(getOMDBMovie(searchOMDB));
   };
 
@@ -102,7 +102,7 @@ const MovieList = () => {
         />
         <button
           type="submit"
-          onClick={handleGetDataFromOMDBApi}
+          onClick={handleCreateFromOMDB}
           className="btn btn-primary"
         >
           Add
