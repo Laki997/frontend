@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { debounce } from "lodash";
 import { MOVIE_GENRE } from "./constants";
@@ -10,6 +10,7 @@ import {
   setSearchParam,
   setSearchFilter,
   getPopularMovies,
+  getOMDBMovie,
 } from "../../store/movies/actions";
 import {
   selectMovies,
@@ -30,6 +31,7 @@ const MovieList = () => {
   const popularMovies = useSelector(selectPopularMovies());
   const searchParam = useSelector(selectSearchParam());
   const filterParam = useSelector(selectFilterParam());
+  const [searchOMDB, setSearchOMDB] = useState("");
 
   const handlePreviousButton = () => {
     dispatch(setCurrentPage(currentPage - 1));
@@ -41,6 +43,14 @@ const MovieList = () => {
 
   const handleSelectChange = ({ target }) => {
     dispatch(setSearchFilter(target.value));
+  };
+
+  const handleSearchOMDB = ({ target }) => {
+    setSearchOMDB(target.value);
+  };
+
+  const handleGetDataFromOMDBApi = () => {
+    dispatch(getOMDBMovie(searchOMDB));
   };
 
   const handleInputChange = debounce(({ target }) => {
@@ -74,7 +84,29 @@ const MovieList = () => {
         </select>
       </div>
       <div>
-        <input type="text" onChange={handleInputChange} name="search" />
+        <h5>Here you can search movies</h5>
+        <input
+          type="text"
+          name="search"
+          onChange={handleInputChange}
+          placeholder="Enter title"
+        />
+      </div>
+      <div>
+        <h5>Here you can create new movie</h5>
+        <input
+          type="text"
+          name="searchOMDB"
+          onChange={handleSearchOMDB}
+          placeholder="Enter title"
+        />
+        <button
+          type="submit"
+          onClick={handleGetDataFromOMDBApi}
+          className="btn btn-primary"
+        >
+          Add
+        </button>
       </div>
       <ul>{renderMovieList}</ul>
       <button disabled={!previousPage} onClick={handlePreviousButton}>

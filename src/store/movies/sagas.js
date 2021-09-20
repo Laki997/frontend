@@ -9,10 +9,12 @@ import {
   CREATE_WATCHLIST_ACTION,
   GET_POPULAR_MOVIES,
   GET_RELATED_MOVIES,
+  GET_OMDB_MOVIE,
 } from "./actionTypes";
-import { takeLatest, put } from "@redux-saga/core/effects";
+import { takeLatest, put, call } from "@redux-saga/core/effects";
 import { push } from "connected-react-router";
 import {
+  createMovieAction,
   setCommentsAction,
   setCurrentWatchListFlag,
   setMoviesAction,
@@ -121,7 +123,20 @@ export function* getRelatedMovies(id) {
     console.log(error);
   }
 }
-
+export function* getOMDBMovieApi(payload) {
+  try {
+    const data = yield movieService.getOMDBMovie(payload);
+    const movie = {
+      title: data.Title,
+      description: data.Plot,
+      genre: data.Genre.toUpperCase(),
+      cover_image: data.Poster,
+    };
+    movieService.createMovie(movie);
+  } catch (error) {
+    console.log(error);
+  }
+}
 export function* movieSaga() {
   yield takeLatest(CREATE_MOVIE, addMovie);
   yield takeLatest(GET_MOVIES, getMovies);
@@ -132,4 +147,5 @@ export function* movieSaga() {
   yield takeLatest(CREATE_WATCHLIST_ACTION, createWatchListAction);
   yield takeLatest(GET_POPULAR_MOVIES, getPopularMovies);
   yield takeLatest(GET_RELATED_MOVIES, getRelatedMovies);
+  yield takeLatest(GET_OMDB_MOVIE, getOMDBMovieApi);
 }

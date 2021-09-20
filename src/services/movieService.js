@@ -1,3 +1,4 @@
+import axios from "axios";
 import BaseService from "./baseService";
 
 const ENDPOINTS = {
@@ -15,6 +16,7 @@ const ENDPOINTS = {
 class MovieService extends BaseService {
   async createMovie(movie) {
     const { data } = await this.client.post(ENDPOINTS.CREATE_MOVIE, movie);
+
     return data;
   }
 
@@ -63,12 +65,17 @@ class MovieService extends BaseService {
   }
 
   async getRelatedMovies(id) {
-    console.log(id);
     const { data } = await this.client.get(
       `${ENDPOINTS.RELATED_MOVIES}${id.id.id}/`
     );
 
-    console.log(data);
+    return data;
+  }
+
+  async getOMDBMovie({ payload }) {
+    const { data } = await axios.get("http://www.omdbapi.com/", {
+      params: { t: payload, apikey: "93059d36" },
+    });
     return data;
   }
 }

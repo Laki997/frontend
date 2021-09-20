@@ -22,7 +22,7 @@ import {
   GET_RELATED_MOVIES,
   SET_RELATED_MOVIES,
   SET_NEW_COMMENT,
-
+  GET_OMDB_MOVIE,
 } from "./actionTypes";
 
 export const createMovieAction = (movie) => ({
@@ -140,4 +140,9 @@ export const getRelatedMovies = (id) => ({
 export const setRelatedMovies = (relatedMovies) => ({
   type: SET_RELATED_MOVIES,
   relatedMovies,
+});
+
+export const getOMDBMovie = (payload) => ({
+  type: GET_OMDB_MOVIE,
+  payload,
 });
