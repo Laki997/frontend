@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import Watched from "../shared/Watched";
 import {
   createWatchListAction,
   getSingleMovie,
@@ -72,28 +73,7 @@ const MovieDetailPage = () => {
             height="200px"
             width="200px"
           ></img>
-          {currentWatchListFlag && (
-            <div>
-              <h3>
-                You have
-                <span>
-                  <strong> watched </strong>
-                </span>
-                this movie from your watchlist!
-              </h3>
-            </div>
-          )}
-          {!currentWatchListFlag && (
-            <div>
-              <h3>
-                You have
-                <span>
-                  <strong> not </strong>
-                </span>
-                watched this movie from your watchlist!
-              </h3>
-            </div>
-          )}
+          <Watched watched={currentWatchListFlag} />
         </div>
       )}
 
