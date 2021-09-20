@@ -1,11 +1,6 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getPopularMovies } from "../../store/movies/actions";
-import { selectPopularMovies } from "../../store/movies/selectors";
 
-const PopularMovies = () => {
-  const popularMovies = useSelector(selectPopularMovies());
+const PopularMovies = ({ popularMovies }) => {
   return (
     <div>
       <ul>
