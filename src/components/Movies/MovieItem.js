@@ -28,12 +28,6 @@ const MovieItem = ({ movie }) => {
       <div>
         <h2>Views: {movie.view_count}</h2>
       </div>
-      {/* {notWatched}
-      {movie.isWatched[0].watched && (
-        <div>
-          <h1>YOU HAVE JUST WATCHED THIS MOVIE FROM YOUR WATCHLIST! </h1>
-        </div>
-      )} */}
     </div>
   );
 };

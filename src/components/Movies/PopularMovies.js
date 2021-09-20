@@ -1,12 +1,6 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getPopularMovies } from "../../store/movies/actions";
-import { selectPopularMovies } from "../../store/movies/selectors";
-import { AiFillStar } from "react-icons/ai";
 
-const PopularMovies = () => {
-  const popularMovies = useSelector(selectPopularMovies());
+const PopularMovies = ({ popularMovies }) => {
   return (
     <div className="sidebar">
       <ul>

@@ -58,7 +58,7 @@ const MovieList = () => {
 
   return (
     <div>
-      <PopularMovies />
+      <PopularMovies popularMovies={popularMovies} />
       <div>
         <select label="genre" name="genre" onChange={handleSelectChange}>
           <option label={MOVIE_GENRE.DRAMA.LABEL}>
