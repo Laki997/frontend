@@ -11,6 +11,7 @@ import {
   setSearchFilter,
   getPopularMovies,
   getOMDBMovie,
+  setElasticSearchParam,
 } from "../../store/movies/actions";
 import {
   selectMovies,
@@ -20,6 +21,7 @@ import {
   selectSearchParam,
   selectFilterParam,
   selectPopularMovies,
+  selectElasticSearchParam,
 } from "../../store/movies/selectors";
 
 const MovieList = () => {
@@ -30,6 +32,7 @@ const MovieList = () => {
   const previousPage = useSelector(selectPreviousPage());
   const popularMovies = useSelector(selectPopularMovies());
   const searchParam = useSelector(selectSearchParam());
+  const elasticSearchParam = useSelector(selectElasticSearchParam());
   const filterParam = useSelector(selectFilterParam());
   const [searchOMDB, setSearchOMDB] = useState("");
 
@@ -56,11 +59,14 @@ const MovieList = () => {
   const handleInputChange = debounce(({ target }) => {
     dispatch(setSearchParam(target.value));
   }, 750);
+  const handleElasticInputChange = debounce(({ target }) => {
+    dispatch(setElasticSearchParam(target.value));
+  }, 750);
 
   useEffect(() => {
-    dispatch(getMoviesAction(currentPage, searchParam, filterParam));
+    dispatch(getMoviesAction(currentPage, elasticSearchParam, filterParam));
     dispatch(getPopularMovies());
-  }, [currentPage, searchParam, filterParam]);
+  }, [currentPage, elasticSearchParam, filterParam]);
 
   const renderMovieList = movies.map((movie) => (
     <MovieItem key={movie.id} movie={movie} />
@@ -88,10 +94,11 @@ const MovieList = () => {
         <input
           type="text"
           name="search"
-          onChange={handleInputChange}
+          onChange={handleElasticInputChange}
           placeholder="Enter title"
         />
       </div>
+
       <div>
         <h5>Here you can create new movie</h5>
         <input

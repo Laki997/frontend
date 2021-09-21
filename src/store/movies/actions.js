@@ -23,6 +23,7 @@ import {
   SET_RELATED_MOVIES,
   SET_NEW_COMMENT,
   GET_OMDB_MOVIE,
+  SET_ELASTIC_SEARCH_PARAM,
 } from "./actionTypes";
 
 export const createMovieAction = (movie) => ({
@@ -30,10 +31,14 @@ export const createMovieAction = (movie) => ({
   payload: movie,
 });
 
-export const getMoviesAction = (currentPage, searchParam, filterParam) => ({
+export const getMoviesAction = (
+  currentPage,
+  elasticSearchParam,
+  filterParam
+) => ({
   type: GET_MOVIES,
   currentPage,
-  searchParam,
+  elasticSearchParam,
   filterParam,
 });
 
@@ -70,6 +75,10 @@ export const setPreviousPage = (previousPage) => ({
 export const setSearchParam = (searchParam) => ({
   type: SET_SEARCH_PARAM,
   searchParam,
+});
+export const setElasticSearchParam = (elasticSearchParam) => ({
+  type: SET_ELASTIC_SEARCH_PARAM,
+  elasticSearchParam,
 });
 
 export const setSearchFilter = (filterParam) => ({
