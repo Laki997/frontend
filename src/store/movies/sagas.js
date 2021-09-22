@@ -51,11 +51,11 @@ export function* addComment({ payload: { movie, content } }) {
   }
 }
 
-export function* getMovies(currentPage, searchParam, filterParam) {
+export function* getMovies(currentPage, elasticSearchParam, filterParam) {
   try {
-    const data = yield movieService.getMovies(
+    const data = yield movieService.getMoviesElastic(
       currentPage,
-      searchParam,
+      elasticSearchParam,
       filterParam
     );
 

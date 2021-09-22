@@ -13,6 +13,7 @@ import {
   SET_POPULAR_MOVIES,
   SET_RELATED_MOVIES,
   SET_NEW_COMMENT,
+  SET_ELASTIC_SEARCH_PARAM,
 } from "./actionTypes";
 
 export const INITIAL_STATE = {
@@ -68,6 +69,12 @@ const movieReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         searchParam: action.searchParam,
+      };
+    }
+    case SET_ELASTIC_SEARCH_PARAM: {
+      return {
+        ...state,
+        elasticSearchParam: action.elasticSearchParam,
       };
     }
     case SET_FILTER_PARAM: {

@@ -21,6 +21,9 @@ export const selectPreviousPage = () =>
 export const selectSearchParam = () =>
   createSelector(selectMovie, (substate) => substate.searchParam);
 
+export const selectElasticSearchParam = () =>
+  createSelector(selectMovie, (substate) => substate.elasticSearchParam);
+
 export const selectFilterParam = () =>
   createSelector(selectMovie, (substate) => substate.filterParam);
 
@@ -41,6 +44,3 @@ export const selectPopularMovies = () =>
 
 export const selectRelatedMovies = () =>
   createSelector(selectMovie, (substate) => substate.relatedMovies);
-
-// export const selectCurrentWatchListFlag = () =>
-//   createSelector(selectMovie, (substate) => substate.movie.gledao[0].watched);

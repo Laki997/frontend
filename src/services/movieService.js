@@ -11,6 +11,7 @@ const ENDPOINTS = {
   CREATE_WATCHLIST: "api/movies/watchlist/",
   POPULAR_MOVIES: "api/movies/popular/",
   RELATED_MOVIES: "api/movies/related/",
+  ELASTIC_MOVIES: "api/elastic/",
 };
 
 class MovieService extends BaseService {
@@ -27,6 +28,16 @@ class MovieService extends BaseService {
   async getMovies({ currentPage, searchParam, filterParam }) {
     const { data } = await this.client.get(ENDPOINTS.MOVIES, {
       params: { page: currentPage, search: searchParam, genre: filterParam },
+    });
+    return data;
+  }
+  async getMoviesElastic({ currentPage, elasticSearchParam, filterParam }) {
+    const { data } = await this.client.get(ENDPOINTS.ELASTIC_MOVIES, {
+      params: {
+        page: currentPage,
+        search: elasticSearchParam,
+        genre: filterParam,
+      },
     });
     return data;
   }
